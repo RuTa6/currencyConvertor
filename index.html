@@ -1,76 +1,81 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>currency convertor</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body onload="loadoptions()">
-    <br>
-    <div class="column is-half box level-item" style="margin-left: 3%;">
-     <section class="header">
-      <div class="container">
-        <h1 class="title has-text-primary">
-        Currency Convertor
-        </h1><br>
+    <div class="box body-wrapper">
+      <div class="header">
+        <div class="title my-title">Currency Convertor</div>
       </div>
-     </section>
 
-     <section>
-      <div class="container">
-          <p class="p field-horizontal has-text-primary">SriLankan Rupees: &nbsp; &nbsp;
-            <input type="text" class="input is-rounded is-primary has-text-primary " style="width: 44%;" name="txtslrs" id="txtslrs"> 
-          </p>
-          <p class="p has-text-primary has-text-weight-bold is-centered" style="margin-left: 25%;">To</p>
-          <label class="p has-text-primary is-normal">Choose Currency Type: 
-            <div class="select is-primary is-rounded">
-             <select name="currencytype" id="currencytype" class="select has-text-primary">
-             </select>
-            </div>
-          </label><br><br>  
-          <p><input type="button" class="button is-primary is-rounded has-text-weight-bold " value="Convert" name="btnconvert" id="btnconvert" style="width: 55%;" onclick="convert()"> </p><br>
-          <p class="p has-text-primary">Converted Amount:&nbsp;
-            <input type="text" class="input is-rounded is-primary has-text-primary" style="width: 44%;" name="txtconvertedrs" id="txtconvertedrs" readonly> </p>
+      <br />
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">SriLankan Rupees: &nbsp; &nbsp;</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <p class="control">
+              <input class="input" type="number" name="txtslrs" id="txtslrs" />
+            </p>
+          </div>
+        </div>
       </div>
-      
-     </section>
+
+      <div class="container">
+        <p class="p has-text-primary">
+          SriLankan Rupees: &nbsp; &nbsp;
+          <input
+            type="text"
+            class="input is-rounded is-primary has-text-primary"
+            name="txtslrs"
+            id="txtslrs"
+          />
+        </p>
+        <p class="p has-text-primary has-text-weight-bold is-centered">To</p>
+        <label class="p has-text-primary is-normal"
+          >Choose Currency Type:
+          <div class="select is-primary is-rounded">
+            <select
+              name="currencytype"
+              id="currencytype"
+              class="select has-text-primary"
+            ></select>
+          </div> </label
+        ><br /><br />
+        <p>
+          <input
+            type="button"
+            class="button is-primary is-rounded has-text-weight-bold"
+            value="Convert"
+            name="btnconvert"
+            id="btnconvert"
+            onclick="convert()"
+          />
+        </p>
+        <br />
+        <p class="p has-text-primary">
+          Converted Amount:&nbsp;
+          <input
+            type="text"
+            class="input is-rounded is-primary has-text-primary"
+            name="txtconvertedrs"
+            id="txtconvertedrs"
+            readonly
+          />
+        </p>
+      </div>
     </div>
-    
 
-  <script>
-    var currency={
-              USD:184.09,
-              EURO:216.98,
-              INDRS:2.52,
-              AUD:132.33
-          }
-      function loadoptions(){
-          var selection=document.querySelector("#currencytype");
-          
-
-          for(var ct in currency){
-         
-            var choice=document.createElement("option");
-            var nod = document.createTextNode(ct); 
-            choice.appendChild(nod); 
-            selection.appendChild(choice)
-          
-
-        }
-      }
-      
-      function convert(){
-          var slrs=document.querySelector("#txtslrs").value;
-          var currencytype= document.querySelector("#currencytype").value;
-          
-          for (var ct in currency){
-              if (currencytype==ct){
-                    var convertedrs= slrs*currency[ct]
-                    document.querySelector("#txtconvertedrs").value=convertedrs
-              }
-          }
-      }
-  </script>
+    <script src="index.js"></script>
   </body>
 </html>
